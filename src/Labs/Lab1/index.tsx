@@ -1,13 +1,6 @@
 export default function Lab1() {
     return (
       <div id="wd-lab1">
-        <ul>
-          <li>
-            <a id="wd-landing-page" href="/">
-              Back to landing page
-            </a>
-          </li>
-        </ul>
         <h2>Lab 1</h2>
         <h3>HTML Examples</h3>
         <div id="wd-h-tag">

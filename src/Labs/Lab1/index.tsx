@@ -168,13 +168,13 @@ export default function Lab1() {
                 <td>Q10</td>
                 <td>MySQL</td>
                 <td>12/20/21</td>
-                <td>90</td>
+                <td>91</td>
               </tr>
             </tbody>
             <tfoot>
               <tr>
                 <td colSpan={3}>Average</td>
-                <td>90</td>
+                <td>92</td>
               </tr>
             </tfoot>
           </table>

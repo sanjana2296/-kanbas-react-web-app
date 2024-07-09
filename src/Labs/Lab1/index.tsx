@@ -329,10 +329,10 @@ export default function Lab1() {
             </a>
             to get dummy text
             <br />
-            <a id="wd-github" href="https://github.com/sanjana2296">
+            <a id="wd-github" href="https://github.com/sanjana2296/kanbas-react-web-app/tree/A1">
               click here
             </a>
-            to my github page
+            to my Kanbas github repository
             <br />
           </form>
         </div>

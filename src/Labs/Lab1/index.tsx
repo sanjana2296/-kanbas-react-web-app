@@ -56,7 +56,7 @@ export default function Lab1() {
             <li>Flip and cook the other side.</li>
             <li>Serve and enjoy!</li>
           </ol>
-          My favorite recipe: Sandwitch
+          My favorite recipe: Sandwich
           <ol id="wd-your-favorite-recipe">
             <li>
               Prepare the bread by toasting it if you prefer a crispy texture, or

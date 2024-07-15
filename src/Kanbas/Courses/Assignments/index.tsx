@@ -4,6 +4,9 @@ import { BsGripVertical } from 'react-icons/bs';
 import { IoNewspaperSharp } from "react-icons/io5";
 import { FaPlus } from 'react-icons/fa';
 import { BsSearch } from 'react-icons/bs';
+import "./index.css";
+import { IoEllipsisVertical } from 'react-icons/io5';
+import { BsPlus } from 'react-icons/bs';
 export default function Assignments() {
   return (
     <div id="wd-assignments" className="container mt-4">
@@ -29,11 +32,14 @@ export default function Assignments() {
       <BsGripVertical className="me-2 fs-3" />
         ASSIGNMENTS
         
-         <button className="btn btn-secondary ms-auto" style={{ borderRadius: '1rem' }}>40% of Total</button>
-         <ModuleControlButtons />
+         <button className="btn bg-light ms-auto" style={{ borderRadius: '1rem', borderColor: "darkgray"}}>40% of Total</button>
+         <div className="float-end">
+      <BsPlus className="fs-4" />
+      <IoEllipsisVertical className="fs-4" />
+    </div>
       </h3>
       <ul id="wd-assignment-list" className="list-group rounded-0">
-        <li className="wd-assignment-list-item list-group-item p-0 mb-5 fs-5 border-gray d-flex align-items-center">
+        <li className="custom-border-left wd-assignment-list-item list-group-item p-0 fs-5 border-gray d-flex align-items-center ">
       <BsGripVertical className="me-2 fs-3" />
       <IoNewspaperSharp />
       <div className="p-3 flex-grow-1">
@@ -44,12 +50,12 @@ export default function Assignments() {
           A1
         </a>
         <br />
-        <span style={{ color: 'red' }}>Multiple Modules</span> | <b>Not Available until</b> May 6 at 12:00am | <br />
-        <b>Due</b> May 13 at 11:59pm | 100 pts
+        <span style={{ color: 'red' }}>Multiple Modules</span> | <b>Not Available until</b> May 6 at 12:00am | 
+        <b> Due</b> May 13 at 11:59pm | 100 pts
       </div>
       <ModuleControlChecks />
     </li>
-        <li className="wd-assignment-list-item list-group-item p-0 mb-5 fs-5 border-gray d-flex align-items-center">
+        <li className="custom-border-left wd-assignment-list-item list-group-item p-0 fs-5 border-gray d-flex align-items-center">
         <BsGripVertical className="me-2 fs-3" />
         <IoNewspaperSharp />
         <div className="p-3 flex-grow-1">
@@ -60,12 +66,12 @@ export default function Assignments() {
             A2
           </a>
           <br/>
-          <span style={{ color: 'red' }}>Multiple Modules</span> |<b> Not Available until</b> May 13 at 12:00am | <br/>
-          <b>Due</b> May 20 at 11:59pm | 100 pts
+          <span style={{ color: 'red' }}>Multiple Modules</span> |<b> Not Available until</b> May 13 at 12:00am | 
+          <b> Due</b> May 20 at 11:59pm | 100 pts
           </div>
           <ModuleControlChecks/>
         </li>
-        <li className="wd-assignment-list-item list-group-item p-0 mb-5 fs-5 border-gray d-flex align-items-center">
+        <li className="custom-border-left wd-assignment-list-item list-group-item p-0 fs-5 border-gray d-flex align-items-center">
         <BsGripVertical className="me-2 fs-3" />
         <IoNewspaperSharp />
         <div className="p-3 flex-grow-1">
@@ -76,8 +82,8 @@ export default function Assignments() {
             A3
           </a>
           <br/>
-          <span style={{ color: 'red' }}>Multiple Modules</span> |<b> Not Available until</b> May 20 at 12:00am | <br/>
-          <b>Due</b> May 27 at 11:59pm | 100 pts 
+          <span style={{ color: 'red' }}>Multiple Modules</span> |<b> Not Available until</b> May 20 at 12:00am | 
+          <b> Due</b> May 27 at 11:59pm | 100 pts 
           </div>
           <ModuleControlChecks/>
         </li>

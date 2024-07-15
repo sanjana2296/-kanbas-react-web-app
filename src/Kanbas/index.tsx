@@ -6,27 +6,23 @@ import Account from "./Account";
 import Calender from "./Calender";
 import Inbox from "./Inbox";
 export default function Kanbas() {
-    return (
-      <div id="wd-kanbas">
-      <table>
-        <tr>
-          <td valign="top">
-            <KanbasNavigation />
-          </td>
-          <td valign="top">
+  return (
+    <div id="wd-kanbas" className="h-100">
+      <div className="d-flex h-100">
+        <div className="d-none d-md-block bg-black">
+          <KanbasNavigation />
+        </div>
+        <div className="flex-fill p-4">
           <Routes>
-              <Route path="/" element={<Navigate to="Dashboard" />} />
-              <Route path="Account" element={<Account/>} />
-              <Route path="Dashboard" element={<Dashboard />} />
-              <Route path="Courses/:id/*" element={<Courses />} />
-              <Route path="Calendar" element={<Calender/>} />
-              <Route path="Inbox" element={<Inbox/>} />
-            </Routes>
-
-          </td>
-        </tr>
-      </table>
+            <Route path="/" element={<Navigate to="Dashboard" />} />
+            <Route path="Account" element={<Account />} />
+            <Route path="Dashboard" element={<Dashboard />} />
+            <Route path="Courses/:id/*" element={<Courses />} />
+            <Route path="Calendar" element={<Calender />} />
+            <Route path="Inbox" element={<Inbox />} />
+          </Routes>
+        </div>
       </div>
-  );}
-  
-  
+    </div>
+  );
+}

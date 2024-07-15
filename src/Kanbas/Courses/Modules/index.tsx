@@ -6,12 +6,6 @@ import GreenCheckmark from './GreenCheckmark'
 export default function Modules() {
     return (
       <div>
-       <div className="d-flex justify-content-center mb-3">
-      <button className="btn btn-light me-2">Collapse All</button>
-      <button className="btn btn-light me-2">View Progress</button>
-      <button className="btn btn-light me-2"><GreenCheckmark/>Publish All</button>
-      <button className="btn btn-danger"> + Module</button>
-    </div>
         <div id="wd-modules">
         <ModulesControls /><br /><br /><br /><br />
         <ul id="wd-modules" className="list-group rounded-0">

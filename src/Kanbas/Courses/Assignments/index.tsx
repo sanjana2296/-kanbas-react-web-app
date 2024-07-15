@@ -15,7 +15,7 @@ export default function Assignments() {
           <span className="input-group-text">
             <BsSearch />
           </span>
-          <input type="text" className="form-control" placeholder="Search for Assignments" id="wd-search-assignment" />
+          <input type="text" className="form-control" placeholder="Search..." id="wd-search-assignment" />
         </div>
         <div>
         <button className="btn btn-light me-2" id="wd-add-assignment-group">

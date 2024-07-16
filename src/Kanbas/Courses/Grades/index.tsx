@@ -63,14 +63,23 @@ export default function Grades() {
       <br />
       <br />
       <div className="table-responsive">
-        <table className="table table-striped">
+        <table className="table table-bordered  table-striped">
           <thead>
-            <tr>
+            <tr className="bg-dark">
               <th>Student Name</th>
-              <th>A1 setup out of 100</th>
-              <th>A2 HTML out of 100</th>
-              <th>A3 CSS out of 100</th>
-              <th>A1 BOOTSTRAP out of 100</th>
+              <th>
+                A1 SETUP <br /> out of 100
+              </th>
+              <th>
+                A2 HTML <br /> out of 100
+              </th>
+              <th>
+                A3 CSS <br /> out of 100
+              </th>
+              <th>
+                A4 BOOTSTRAP <br />
+                out of 100
+              </th>
             </tr>
           </thead>
           <tbody>

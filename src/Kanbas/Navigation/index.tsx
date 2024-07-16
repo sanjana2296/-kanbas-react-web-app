@@ -3,11 +3,13 @@ import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
 import { IoChevronBackCircle } from "react-icons/io5";
+import "../styles.css";
 export default function KanbasNavigation() {
   return (
     <div
       id="wd-kanbas-navigation"
       className="list-group rounded-0 position-fixed bottom-0 top-0 d-none d-md-block z-2 bg-black"
+      style={{ width: "min-content" }}
     >
       <a
         id="wd-neu-link"

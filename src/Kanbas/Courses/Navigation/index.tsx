@@ -1,56 +1,35 @@
+import { useParams, useLocation } from "react-router";
 import "./index.css";
+import { courses } from "../../Database";
+
 export default function CoursesNavigation() {
+  const links = [
+    { name: "Home", path: "Home" },
+    { name: "Modules", path: "Modules" },
+    { name: "Piazza", path: "Piazza" },
+    { name: "Zoom", path: "Zoom" },
+    { name: "Assignments", path: "Assignments" },
+    { name: "Quizzes", path: "Quizzes" },
+    { name: "Grades", path: "Grades" },
+  ];
+  const { cid } = useParams();
+  console.log("inside naviggation page" + cid);
+  const { pathname } = useLocation();
+
   return (
     <div id="wd-courses-navigation" className="list-group fs-5 rounded-0">
-      <a
-        id="wd-course-home-link"
-        href="#/Kanbas/Courses/1234/Home"
-        className="list-group-item active border border-0"
-      >
-        Home
-      </a>
-      <a
-        id="wd-course-modules-link"
-        href="#/Kanbas/Courses/1234/Modules"
-        className="list-group-item text-danger border border-0"
-      >
-        Modules
-      </a>
-      <a
-        id="wd-course-piazza-link"
-        href="#/Kanbas/Courses/1234/Piazza"
-        className="list-group-item text-danger border border-0"
-      >
-        Piazza
-      </a>
-      <a
-        id="wd-course-zoom-link"
-        href="#/Kanbas/Courses/1234/Zoom"
-        className="list-group-item text-danger border border-0"
-      >
-        Zoom
-      </a>
-      <a
-        id="wd-course-quizzes-link"
-        href="#/Kanbas/Courses/1234/Assignments"
-        className="list-group-item text-danger border border-0"
-      >
-        Assignments
-      </a>
-      <a
-        id="wd-course-assignments-link"
-        href="#/Kanbas/Courses/1234/Quizzes"
-        className="list-group-item text-danger border border-0"
-      >
-        Quizzes
-      </a>
-      <a
-        id="wd-course-grades-link"
-        href="#/Kanbas/Courses/1234/Grades"
-        className="list-group-item text-danger border border-0"
-      >
-        Grades
-      </a>
+      {links.map((link) => (
+        <a
+          key={link.name}
+          id={`wd-course-${link.name.toLowerCase()}-link`}
+          href={`#/Kanbas/Courses/${cid}/${link.path}`}
+          className={`list-group-item border border-0 ${
+            pathname.includes(link.path) ? "active" : "text-danger"
+          }`}
+        >
+          {link.name}
+        </a>
+      ))}
     </div>
   );
 }

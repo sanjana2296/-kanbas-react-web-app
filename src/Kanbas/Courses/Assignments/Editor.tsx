@@ -1,20 +1,35 @@
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router";
+import * as db from "../../Database";
 export default function AssignmentEditor() {
+  const { cid } = useParams<{ cid: string }>();
+  const { aid } = useParams<{ aid: string }>();
+  const navigate = useNavigate();
+  const handleCancelClick = () => {
+    navigate(`/Kanbas/Courses/${cid}/Assignments`);
+  };
+
+  function getAssignmentsForCourse(cid: String) {
+    return db.assignments.filter((assignment) => assignment._id === aid);
+  }
+
+  const results = getAssignmentsForCourse(aid + "");
   return (
     <div id="wd-assignments-editor">
       <div className="mb-3">
         <label htmlFor="wd-name" className="col-sm-2 col-form-label">
           Assignment Name
         </label>
-        <input type="text" className="form-control" id="wd-name" value="A1" />
+        <input
+          type="text"
+          className="form-control"
+          id="wd-name"
+          value={results[0].title}
+        />
       </div>
       <div className="mb-3">
         <textarea className="form-control" id="wd-description" rows={4}>
-          The assignment is available online. Submit a link to the landing page.
-          The landing page should include the following: Your full name and
-          section Links to each of the lab assignments Link to the Kanbas
-          application Links to all relevant source code repositories The Kanbas
-          application should include a link to navigate back to the landing
-          page.
+          {results[0].description}
         </textarea>
       </div>
       <br />
@@ -30,7 +45,7 @@ export default function AssignmentEditor() {
             type="text"
             className="form-control"
             id="wd-points"
-            value={100}
+            value={results[0].points}
           />
         </div>
       </div>
@@ -163,7 +178,7 @@ export default function AssignmentEditor() {
               type="date"
               className="form-control"
               id="wd-due-date"
-              value="2024-05-13"
+              value={results[0].dueDate}
             />
             <label
               htmlFor="wd-available-from"
@@ -174,7 +189,7 @@ export default function AssignmentEditor() {
                 type="date"
                 className="form-control"
                 id="wd-available-from"
-                value="2024-05-06"
+                value={results[0].availableFrom}
               />
             </label>{" "}
             <label
@@ -186,7 +201,7 @@ export default function AssignmentEditor() {
                 type="date"
                 className="form-control"
                 id="wd-available-until"
-                value=""
+                value="2024-05-20"
               />
             </label>
           </div>
@@ -195,10 +210,18 @@ export default function AssignmentEditor() {
       <hr style={{ width: "350%" }} />
       <div className="row mb-3 justify-content-end">
         <div className="col-auto">
-          <button className="btn btn-light me-2" id="wd-assignment-cancel">
+          <button
+            className="btn btn-light me-2"
+            id="wd-assignment-cancel"
+            onClick={handleCancelClick}
+          >
             Cancel
           </button>
-          <button className="btn btn-danger" id="wd-assignment-save">
+          <button
+            className="btn btn-danger"
+            id="wd-assignment-save"
+            onClick={handleCancelClick}
+          >
             Save
           </button>
         </div>

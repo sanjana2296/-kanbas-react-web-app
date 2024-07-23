@@ -7,5 +7,492 @@
     { "_id": "A203", "title": "Heating Analysis", "course": "RS102", "description": "Evaluation of heat transfer mechanisms and their impact on aerospace vehicle performance.", "points": 20, "dueDate": "2024-05-29", "availableFrom": "2024-05-22" },
     { "_id": "A301", "title": "Structural Design Task", "course": "RS103", "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.", "points": 40, "dueDate": "2024-05-17", "availableFrom": "2024-05-10" },
     { "_id": "A302", "title": "Orbital Calculations", "course": "RS103", "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.", "points": 78, "dueDate": "2024-05-24", "availableFrom": "2024-05-17" },
-    { "_id": "A303", "title": "Systems Engineering Exam", "course": "RS103", "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.", "points": 90, "dueDate": "2024-05-31", "availableFrom": "2024-05-24" }
+    { "_id": "A303", "title": "Systems Engineering Exam", "course": "RS103", "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.", "points": 90, "dueDate": "2024-05-31", "availableFrom": "2024-05-24" },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS104",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS104",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS104",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS105",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS105",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS105",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS106",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS106",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS106",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS107",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS107",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS107",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS108",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS108",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS108",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS109",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS109",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS109",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS110",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS110",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS110",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS111",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS111",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS111",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS112",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS112",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS112",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS113",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS113",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS113",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS114",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS114",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS114",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS115",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS115",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS115",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS116",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS116",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS116",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS117",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS117",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS117",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS118",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS118",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS118",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS119",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS119",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS119",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS120",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS120",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS120",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        },
+        {
+            "_id": "A301",
+            "title": "Structural Design Task",
+            "course": "RS121",
+            "description": "Design and evaluation of aerospace structures for optimal strength and weight considerations.",
+            "points": 40,
+            "dueDate": "2024-05-17",
+            "availableFrom": "2024-05-10"
+        },
+        {
+            "_id": "A302",
+            "title": "Orbital Calculations",
+            "course": "RS121",
+            "description": "Calculations and simulations related to orbital mechanics and trajectory analysis.",
+            "points": 78,
+            "dueDate": "2024-05-24",
+            "availableFrom": "2024-05-17"
+        },
+        {
+            "_id": "A303",
+            "title": "Systems Engineering Exam",
+            "course": "RS121",
+            "description": "Comprehensive examination covering systems engineering principles and their application in aerospace projects.",
+            "points": 90,
+            "dueDate": "2024-05-31",
+            "availableFrom": "2024-05-24"
+        }
+        
 ]

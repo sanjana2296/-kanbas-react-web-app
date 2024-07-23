@@ -29,12 +29,6 @@ export default function Grades() {
   }
 
   function getGradeForAssignment(assignmentId: any, studentId: any) {
-    console.log(
-      "Looking for grade - Assignment ID:",
-      assignmentId,
-      "Student ID:",
-      studentId
-    );
     const grade = db.grades.find(
       (grade) =>
         grade.assignment === assignmentId && grade.student === studentId

@@ -13,7 +13,6 @@ export default function CoursesNavigation() {
     { name: "Grades", path: "Grades" },
   ];
   const { cid } = useParams();
-  console.log("inside naviggation page" + cid);
   const { pathname } = useLocation();
 
   return (

@@ -54,7 +54,6 @@
       "assignment": "A201",
       "grade": "82"
     },
-  
     {
       "_id": "10",
       "student": "124",
@@ -71,6 +70,60 @@
       "_id": "12",
       "student": "126",
       "assignment": "A202",
+      "grade": "80"
+    },
+    {
+      "_id": "10",
+      "student": "124",
+      "assignment": "A301",
+      "grade": "82"
+    },
+    {
+      "_id": "11",
+      "student": "125",
+      "assignment": "A301",
+      "grade": "81"
+    },
+    {
+      "_id": "12",
+      "student": "126",
+      "assignment": "A301",
+      "grade": "80"
+    },
+    {
+      "_id": "10",
+      "student": "124",
+      "assignment": "A302",
+      "grade": "82"
+    },
+    {
+      "_id": "11",
+      "student": "125",
+      "assignment": "A302",
+      "grade": "81"
+    },
+    {
+      "_id": "12",
+      "student": "126",
+      "assignment": "A302",
+      "grade": "80"
+    },
+    {
+      "_id": "10",
+      "student": "124",
+      "assignment": "A303",
+      "grade": "82"
+    },
+    {
+      "_id": "11",
+      "student": "125",
+      "assignment": "A303",
+      "grade": "81"
+    },
+    {
+      "_id": "12",
+      "student": "126",
+      "assignment": "A303",
       "grade": "80"
     }
   ]

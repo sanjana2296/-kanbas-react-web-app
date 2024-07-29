@@ -29,6 +29,7 @@ import Styles from "./Styles";
 import Square from "./Square";
 import Highlight from "./Highlight";
 import Add from "./Add";
+import PathParameters from "./PathParameters";
 export default function Lab3() {
   return (
     <div id="wd-lab3" className="container-fluid">
@@ -66,6 +67,7 @@ export default function Lab3() {
       <h4>Square of 4</h4>
       <Square>4</Square>
       <hr />
+      <PathParameters />
       <Highlight>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipitratione
         eaque illo minus cum, saepe totam vel nihil repellat nemo explicabo

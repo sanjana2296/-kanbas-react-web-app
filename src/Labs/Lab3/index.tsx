@@ -28,6 +28,7 @@ import Classes from "./Classes";
 import Styles from "./Styles";
 import Square from "./Square";
 import Highlight from "./Highlight";
+import PathParameters from "./PathParameters";
 import Add from "./Add";
 export default function Lab3() {
   return (
@@ -64,6 +65,7 @@ export default function Lab3() {
       <Add a={3} b={4} />
       <h4>Square of 4</h4>
       <Square>4</Square>
+      <PathParameters />
       <hr />
       <Highlight>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipitratione

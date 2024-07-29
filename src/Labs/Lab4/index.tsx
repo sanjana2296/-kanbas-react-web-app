@@ -4,7 +4,6 @@ import PassingDataOnEvent from "./PassingDataOnEvent";
 import PassingFunctions from "./PassingFunctions";
 import EventObject from "./EventObject";
 import Counter from "./Counter";
-import CounterWithState from "./CounterWithState";
 import BooleanStateVariables from "./BooleanStateVariables";
 import StringStateVariables from "./StringStateVariables";
 import DateStateVariable from "./DateStateVariable";
@@ -23,7 +22,6 @@ export default function Lab4() {
       <PassingFunctions theFunction={sayHello} />
       <EventObject />
       <Counter />
-      <CounterWithState />
       <BooleanStateVariables />
       <StringStateVariables />
       <DateStateVariable />

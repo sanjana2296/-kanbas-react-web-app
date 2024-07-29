@@ -330,7 +330,7 @@ export default function Lab1() {
           <br />
           <a
             id="wd-github"
-            href="https://github.com/sanjana2296/kanbas-react-web-app/tree/A1"
+            href="https://github.com/sanjana2296/kanbas-react-web-app"
           >
             click here
           </a>

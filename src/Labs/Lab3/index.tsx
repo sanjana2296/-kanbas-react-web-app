@@ -33,7 +33,6 @@ export default function Lab3() {
   return (
     <div id="wd-lab3" className="container-fluid">
       <h3>Lab 3</h3>
-      {/* <a id="wd-landing-page" className="list-group-item text-white bg-black text-center border-0" href="/">Back to landing page</a> */}
       <VariablesAndConstants />
       <VariableTypes />
       <BooleanVariables />

@@ -77,7 +77,7 @@ export default function AssignmentEditor() {
           rows={4}
           onChange={(e) => setDescription(e.target.value)}
         >
-          {description}
+          {(results[0] && results[0].description) || description}
         </textarea>
       </div>
       <br />

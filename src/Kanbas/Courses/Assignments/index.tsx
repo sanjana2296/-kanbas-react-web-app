@@ -95,7 +95,8 @@ export default function Assignments() {
               <br />
               <span style={{ color: "red" }}>Multiple Modules</span> |{" "}
               <b>Not Available until</b> May 6 at 12:00am | <br />
-              <b>Due</b> May 13 at 11:59pm | 100 pts
+              <b>Due</b> May 13 at 11:59pm | {assignment && assignment.points}{" "}
+              pts
             </div>
             <ModuleControlChecks
               assignmentId={assignment._id}

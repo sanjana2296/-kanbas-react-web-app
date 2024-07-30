@@ -19,9 +19,9 @@ export default function AssignmentEditor() {
 
   const results = getAssignmentsForCourse(aid + "");
 
-  const [title, setTitle] = useState("New Assignment Name");
+  const [title, setTitle] = useState("New Assignment");
   const [course, setCourse] = useState(cid);
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState("New Description");
   const [points, setPoints] = useState(100);
   const [dueDate, setDueDate] = useState("2023-12-15");
   const [availableFrom, setAvailableFrom] = useState("2023-09-10");

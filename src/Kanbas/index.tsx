@@ -18,7 +18,7 @@ export default function Kanbas() {
     number: "New Number",
     startDate: "2023-09-10",
     endDate: "2023-12-15",
-    description: "",
+    description: "New Description",
   });
   const addNewCourse = () => {
     setCourses([

@@ -21,7 +21,7 @@ export default function AssignmentEditor() {
 
   const [title, setTitle] = useState("New Assignment");
   const [course, setCourse] = useState(cid);
-  const [description, setDescription] = useState("New Description");
+  const [description, setDescription] = useState("New Assignment Description");
   const [points, setPoints] = useState(100);
   const [dueDate, setDueDate] = useState("2023-12-15");
   const [availableFrom, setAvailableFrom] = useState("2023-09-10");
@@ -30,7 +30,7 @@ export default function AssignmentEditor() {
     if (results && results[0]) {
       setTitle(results[0].title || "New Assignment");
       setPoints(results[0].points ?? 100);
-      setDescription(results[0].description || "New Description");
+      setDescription(results[0].description || "New Assignment Description");
       setDueDate(results[0].dueDate || "2023-12-15");
       setAvailableFrom(results[0].availableFrom || "2023-09-10");
     }

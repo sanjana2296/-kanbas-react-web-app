@@ -1,19 +1,61 @@
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
-import * as db from "../../Database";
+import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { addAssignment, updateAssignment, editAssignment } from "./reducer";
 export default function AssignmentEditor() {
   const { cid } = useParams<{ cid: string }>();
   const { aid } = useParams<{ aid: string }>();
   const navigate = useNavigate();
+  const { assignments } = useSelector((state: any) => state.assignmentReducer);
+  const dispatch = useDispatch();
   const handleCancelClick = () => {
     navigate(`/Kanbas/Courses/${cid}/Assignments`);
   };
 
   function getAssignmentsForCourse(cid: String) {
-    return db.assignments.filter((assignment) => assignment._id === aid);
+    return assignments.filter((assignment: any) => assignment._id === aid);
   }
 
   const results = getAssignmentsForCourse(aid + "");
+
+  const [title, setTitle] = useState("New Assignment Name");
+  const [course, setCourse] = useState(cid);
+  const [description, setDescription] = useState("");
+  const [points, setPoints] = useState(100);
+  const [dueDate, setDueDate] = useState("2023-12-15");
+  const [availableFrom, setAvailableFrom] = useState("2023-09-10");
+
+  useEffect(() => {
+    if (results && results[0]) {
+      setTitle(results[0].title || "New Assignment");
+      setPoints(results[0].points ?? 100);
+      setDescription(results[0].description || "New Description");
+      setDueDate(results[0].dueDate || "2023-12-15");
+      setAvailableFrom(results[0].availableFrom || "2023-09-10");
+    }
+  }, [aid]);
+
+  const handleSaveAssignment = () => {
+    const assignmentData = {
+      _id: aid,
+      title,
+      course: cid,
+      description,
+      points,
+      dueDate,
+      availableFrom,
+    };
+
+    if (results[0] && results[0]._id === aid) {
+      dispatch(updateAssignment(assignmentData));
+    } else {
+      dispatch(addAssignment(assignmentData));
+    }
+
+    navigate(`/Kanbas/Courses/${cid}/Assignments`);
+  };
+
   return (
     <div id="wd-assignments-editor">
       <div className="mb-3">
@@ -24,12 +66,18 @@ export default function AssignmentEditor() {
           type="text"
           className="form-control"
           id="wd-name"
-          value={results[0].title}
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
         />
       </div>
       <div className="mb-3">
-        <textarea className="form-control" id="wd-description" rows={4}>
-          {results[0].description}
+        <textarea
+          className="form-control"
+          id="wd-description"
+          rows={4}
+          onChange={(e) => setDescription(e.target.value)}
+        >
+          {description}
         </textarea>
       </div>
       <br />
@@ -45,7 +93,8 @@ export default function AssignmentEditor() {
             type="text"
             className="form-control"
             id="wd-points"
-            value={results[0].points}
+            onChange={(e) => setPoints(parseFloat(e.target.value))}
+            value={points}
           />
         </div>
       </div>
@@ -178,7 +227,8 @@ export default function AssignmentEditor() {
               type="date"
               className="form-control"
               id="wd-due-date"
-              value={results[0].dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+              value={dueDate}
             />
             <label
               htmlFor="wd-available-from"
@@ -189,7 +239,8 @@ export default function AssignmentEditor() {
                 type="date"
                 className="form-control"
                 id="wd-available-from"
-                value={results[0].availableFrom}
+                onChange={(e) => setAvailableFrom(e.target.value)}
+                value={availableFrom}
               />
             </label>{" "}
             <label
@@ -220,7 +271,7 @@ export default function AssignmentEditor() {
           <button
             className="btn btn-danger"
             id="wd-assignment-save"
-            onClick={handleCancelClick}
+            onClick={handleSaveAssignment}
           >
             Save
           </button>

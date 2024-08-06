@@ -13,24 +13,6 @@ export default function WorkingWithObjects() {
   return (
     <div id="wd-working-with-objects">
       <h3>Working With Objects</h3>
-      <h4>Modifying Properties</h4>
-      <a
-        id="wd-update-assignment-title"
-        className="btn btn-primary float-end"
-        href={`${ASSIGNMENT_API_URL}/title/${assignment.title}`}
-      >
-        Update Title
-      </a>
-      <input
-        className="form-control w-75"
-        id="wd-assignment-title"
-        value={assignment.title}
-        onChange={(e) =>
-          setAssignment({ ...assignment, title: e.target.value })
-        }
-      />
-      <hr />
-
       <h4>Retrieving Objects</h4>
       <a
         id="wd-retrieve-assignments"
@@ -49,6 +31,23 @@ export default function WorkingWithObjects() {
         Get Title
       </a>
       <hr />
+      <h4>Modifying Properties</h4>
+      <a
+        id="wd-update-assignment-title"
+        className="btn btn-primary float-end"
+        href={`${ASSIGNMENT_API_URL}/title/${assignment.title}`}
+      >
+        Update Title
+      </a>
+      <input
+        className="form-control w-75"
+        id="wd-assignment-title"
+        value={assignment.title}
+        onChange={(e) =>
+          setAssignment({ ...assignment, title: e.target.value })
+        }
+      />
+      <hr />
       <a
         id="wd-update-assignment-score"
         className="btn btn-primary float-end"
@@ -66,7 +65,6 @@ export default function WorkingWithObjects() {
         }
       />
       <hr />
-      <hr />
       <a
         id="wd-update-assignment-completed"
         className="btn btn-primary float-end"
@@ -74,7 +72,7 @@ export default function WorkingWithObjects() {
       >
         Update Completed
       </a>
-      <label className="form-check-label">checked</label>
+      <label className="form-check-label">checked </label>
       <input
         type="checkbox"
         id="wd-assignment-completed"
@@ -83,6 +81,7 @@ export default function WorkingWithObjects() {
           setAssignment({ ...assignment, completed: e.target.checked })
         }
       />
+      <br /> <br />
       <hr />
     </div>
   );

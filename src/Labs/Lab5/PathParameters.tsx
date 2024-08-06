@@ -3,9 +3,8 @@ const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
 export default function PathParameters() {
   const [a, setA] = useState("34");
   const [b, setB] = useState("23");
-  console.log("remote server::", REMOTE_SERVER);
   return (
-    <div className="container" id="wd-path-parameters">
+    <div id="wd-path-parameters">
       <h3>Path Parameters</h3>
       <input
         className="form-control mb-2"

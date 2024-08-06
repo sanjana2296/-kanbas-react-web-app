@@ -29,14 +29,14 @@ export default function QueryParameters() {
       </a>
       <a
         id="wd-query-parameter-subtract"
-        className="btn btn-warning me-2"
+        className="btn btn-danger me-2"
         href={`${REMOTE_SERVER}/lab5/calculator?operation=subtract&a=${a}&b=${b}`}
       >
         Subtract {a} - {b}
       </a>
       <a
         id="wd-query-parameter-multiply"
-        className="btn btn-danger me-2"
+        className="btn btn-warning me-2"
         href={`${REMOTE_SERVER}/lab5/calculator?operation=multiply&a=${a}&b=${b}`}
       >
         Multiply {a} * {b}

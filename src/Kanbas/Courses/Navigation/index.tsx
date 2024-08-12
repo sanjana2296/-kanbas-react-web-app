@@ -11,6 +11,7 @@ export default function CoursesNavigation() {
     { name: "Assignments", path: "Assignments" },
     { name: "Quizzes", path: "Quizzes" },
     { name: "Grades", path: "Grades" },
+    { name: "People", path: "People" },
   ];
   const { cid } = useParams();
   const { pathname } = useLocation();

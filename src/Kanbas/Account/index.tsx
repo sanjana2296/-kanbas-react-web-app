@@ -1,7 +1,38 @@
+import { Routes, Route, Navigate } from "react-router-dom";
+import Signin from "./Signin";
+import AccountNavigation from "./Navigation";
+import Profile from "./Profile";
+import Signup from "./Signup";
+import { useSelector } from "react-redux";
+import { MdMargin } from "react-icons/md";
 export default function Account() {
-    return (
-      <div id="wd-account">
-      <h1>Account</h1>
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  return (
+    <div className="wd-account-screen" style={{ margin: 150 }}>
+      <div className="d-flex">
+        <div className="d-none d-md-block">
+          <AccountNavigation />
+        </div>
+        <div className="flex-fill p-4 pt-0">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Navigate
+                  to={
+                    currentUser
+                      ? "/Kanbas/Account/Profile"
+                      : "/Kanbas/Account/Signin"
+                  }
+                />
+              }
+            />
+            <Route path="/Signin" element={<Signin />} />
+            <Route path="/Signup" element={<Signup />} />
+            <Route path="/Profile" element={<Profile />} />
+          </Routes>
+        </div>
       </div>
-  );}
-  
+    </div>
+  );
+}

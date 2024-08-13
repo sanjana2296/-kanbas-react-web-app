@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
+const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER_A;
 export default function WorkingWithModules() {
   const [module, setModule] = useState({
     id: 1,

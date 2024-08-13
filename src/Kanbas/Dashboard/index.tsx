@@ -58,7 +58,7 @@ export default function Dashboard({
           {courses.map((course) => (
             <div className="wd-dashboard-course col" style={{ width: "300px" }}>
               <Link
-                to={`/Kanbas/Courses/${course._id}/Home`}
+                to={`/Kanbas/Courses/${course.number}/Home`}
                 className="text-decoration-none"
               >
                 <div className="card rounded-3 overflow-hidden">
@@ -81,7 +81,7 @@ export default function Dashboard({
                       {course.description}
                     </p>
                     <Link
-                      to={`/Kanbas/Courses/${course._id}/Home`}
+                      to={`/Kanbas/Courses/${course.number}/Home`}
                       className="btn btn-primary"
                     >
                       Go
@@ -90,7 +90,7 @@ export default function Dashboard({
                     <button
                       onClick={(event) => {
                         event.preventDefault();
-                        deleteCourse(course._id);
+                        deleteCourse(course.number);
                       }}
                       className="btn btn-danger float-end"
                       id="wd-delete-course-click"

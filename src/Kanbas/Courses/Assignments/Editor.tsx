@@ -23,7 +23,10 @@ export default function AssignmentEditor() {
   async function getAssignmentsForCourse(cid: String) {
     const assignments = await client.findAssignmentById(cid as string);
     console.log(assignments);
-    setResults(assignments.filter((assignment: any) => assignment._id === aid));
+    if (assignments && Array.isArray(assignments))
+      setResults(
+        assignments.filter((assignment: any) => assignment._id === aid)
+      );
     if (assignments && assignments[0]) {
       setTitle(assignments[0].title);
       setPoints(assignments[0].points);

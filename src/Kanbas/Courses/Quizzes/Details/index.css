@@ -1,0 +1,88 @@
+.text-fontsize {
+    font-size: 0.8em;
+    margin-right: 0.5em;
+    margin-bottom: 0.3em;
+}
+
+.published-icon {
+    color: green;
+    padding-right: 0.5rem;
+    padding-top: 0.25rem;
+}
+
+.published-text {
+    padding-top: 0.25rem;
+    font-weight: bold;
+    color: green;
+    margin-right: 1rem;
+}
+
+.details-text {
+    padding-top: 0.4rem;
+    text-align: right;
+}
+
+.plus-icon {
+    margin-bottom: 0.15rem;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown .icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.dropdown select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+}
+
+.chkbox-label {
+    padding-left: 0.8rem;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.available-padding {
+    padding-top: 1rem;
+}
+
+.assign-placeholder::placeholder {
+    padding: 0.2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    width: 25%;
+}
+
+.add-button {
+    margin-top: 3rem;
+    background-color: #f0f0f0;
+}
+
+.label-text {
+    font-weight: bold;
+}
+
+.search-icon {
+    height: 38px;
+}
+
+.details-value {
+    padding-top: 0.4rem;
+}
+
+.container {
+    padding-top: 2rem;
+}

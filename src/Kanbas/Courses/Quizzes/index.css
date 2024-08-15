@@ -1,0 +1,76 @@
+.txt-title {
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 1em;
+}
+
+.ellipsis-icon {
+    padding-left: 0.5em;
+}
+
+.edit-icon {
+    color: green;
+    padding-left: 1em;
+}
+
+.caret-down-icon {
+    margin-left: 6px;
+}
+
+.btn-total {
+    border: 1px solid;
+    padding: 0.15rem 0.5rem;
+}
+
+.icon-right-padding {
+    padding-right: 0.7rem;
+}
+
+.txt-subtitle-quiz {
+    font-size: 14px;
+    padding-left: 2.6rem;
+    color: gray;
+}
+
+.txt-bold {
+    font-weight: bold;
+}
+
+.link-style {
+    color: black;
+    text-decoration: none;
+    /* Remove underline */
+}
+
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+    outline: 1px solid gray;
+}
+
+.dropdown-icon {
+    margin-right: 1rem;
+    margin-left: 1rem;
+    color: green;
+}
+
+.dropdown-divider {
+    height: 1px;
+    margin: .5rem 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}
+
+.dropdown-item {
+    margin-top: 1em;
+}
+
+.text-success {
+    color: green;
+    margin-right: 1em;
+}
+
+.text-danger {
+    margin-right: 1em;
+    color: gray;
+}

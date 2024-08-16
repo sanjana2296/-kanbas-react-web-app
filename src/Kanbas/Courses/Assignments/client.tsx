@@ -1,5 +1,5 @@
 import axios from "axios";
-const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER_A;
+const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
 const ASSIGNMENTS_API = `${REMOTE_SERVER}/api/assignments`;
 const ASSIGNMNET_API_FETCH = `${REMOTE_SERVER}/api/assignment`;
 export const fetchAllAssignments = async () => {

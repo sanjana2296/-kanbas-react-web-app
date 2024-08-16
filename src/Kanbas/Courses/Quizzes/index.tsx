@@ -24,8 +24,10 @@ import { Dropdown } from "react-bootstrap";
 import { MdDelete } from "react-icons/md";
 import { IoRocketOutline } from "react-icons/io5";
 import * as client from "./client";
-import "bootstrap/dist/js/bootstrap.bundle.min";
 
+import * as profileClient from "../../Account/client";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+let account: any;
 function Quizzes() {
   const { cid } = useParams();
   const quizList = useSelector(
@@ -34,6 +36,15 @@ function Quizzes() {
   const quiz = useSelector((state: KanbasState) => state.quizzesReducer.quiz);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const fetchProfile = async () => {
+    try {
+      account = await profileClient.profile();
+    } catch (err: any) {}
+  };
+  useEffect(() => {
+    fetchProfile();
+  }, []);
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -130,28 +141,30 @@ function Quizzes() {
           />
         </div>
 
-        <div className="d-flex justify-content-end">
-          <button
-            className="btn btn-danger btn-sm btn-spacing me-2"
-            style={{ paddingTop: 6 }}
-            onClick={() => {
-              handleAddQuiz();
-              dispatch(setEditMode(false));
-            }}
-          >
-            <FaPlus
-              className="chk-icon-spacing"
-              style={{ fontSize: "0.8em" }}
-            />
-            <span style={{ marginTop: 6 }}>Quiz</span>
-          </button>
-          <button
-            type="button"
-            className="btn btn-outline-secondary btn-sm btn-spacing btn-color"
-          >
-            <FaEllipsisV />
-          </button>
-        </div>
+        {account?.role !== "STUDENT" && (
+          <div className="d-flex justify-content-end">
+            <button
+              className="btn btn-danger btn-sm btn-spacing me-2"
+              style={{ paddingTop: 6 }}
+              onClick={() => {
+                handleAddQuiz();
+                dispatch(setEditMode(false));
+              }}
+            >
+              <FaPlus
+                className="chk-icon-spacing"
+                style={{ fontSize: "0.8em" }}
+              />
+              <span style={{ marginTop: 6 }}>Quiz</span>
+            </button>
+            <button
+              type="button"
+              className="btn btn-outline-secondary btn-sm btn-spacing btn-color"
+            >
+              <FaEllipsisV />
+            </button>
+          </div>
+        )}
       </div>
 
       <hr />
@@ -217,57 +230,58 @@ function Quizzes() {
                         />
                       )}
                     </span>
-
-                    <Dropdown>
-                      <Dropdown.Toggle
-                        as={FaEllipsisV}
-                        style={{
-                          cursor: "pointer",
-                        }}
-                        id="dropdown-basic"
-                      />
-
-                      <Dropdown.Menu className="dropdown-menu-right">
-                        <Dropdown.Item
-                          onClick={() => {
-                            navigate(
-                              `/Kanbas/Courses/${cid}/quizzes/${quiz._id}/Editor`
-                            );
+                    {account?.role !== "STUDENT" && (
+                      <Dropdown>
+                        <Dropdown.Toggle
+                          as={FaEllipsisV}
+                          style={{
+                            cursor: "pointer",
                           }}
-                          className="dropdown-item p-2"
-                        >
-                          <BsPencilSquare className="dropdown-icon me-2" />
-                          Edit
-                        </Dropdown.Item>
+                          id="dropdown-basic"
+                        />
 
-                        <div className="dropdown-divider"></div>
+                        <Dropdown.Menu className="dropdown-menu-right">
+                          <Dropdown.Item
+                            onClick={() => {
+                              navigate(
+                                `/Kanbas/Courses/${cid}/quizzes/${quiz._id}/Editor`
+                              );
+                            }}
+                            className="dropdown-item p-2"
+                          >
+                            <BsPencilSquare className="dropdown-icon me-2" />
+                            Edit
+                          </Dropdown.Item>
 
-                        <Dropdown.Item
-                          className="dropdown-item p-2"
-                          onClick={() => handleDeleteQuiz(quiz._id)}
-                        >
-                          <MdDelete className="dropdown-icon me-2" />
-                          Delete
-                        </Dropdown.Item>
+                          <div className="dropdown-divider"></div>
 
-                        <div className="dropdown-divider"></div>
+                          <Dropdown.Item
+                            className="dropdown-item p-2"
+                            onClick={() => handleDeleteQuiz(quiz._id)}
+                          >
+                            <MdDelete className="dropdown-icon me-2" />
+                            Delete
+                          </Dropdown.Item>
 
-                        <Dropdown.Item
-                          className="dropdown-item p-2"
-                          style={{ marginBottom: "1em" }}
-                          onClick={() => {
-                            publishQuiz(quiz);
-                          }}
-                        >
-                          {!quiz.isPublished ? (
-                            <FaCheckCircle className="dropdown-icon text-success me-2" />
-                          ) : (
-                            <FaBan className="dropdown-icon text-danger me-2" />
-                          )}
-                          {!quiz.isPublished ? "Publish" : "Unpublish"}
-                        </Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
+                          <div className="dropdown-divider"></div>
+
+                          <Dropdown.Item
+                            className="dropdown-item p-2"
+                            style={{ marginBottom: "1em" }}
+                            onClick={() => {
+                              publishQuiz(quiz);
+                            }}
+                          >
+                            {!quiz.isPublished ? (
+                              <FaCheckCircle className="dropdown-icon text-success me-2" />
+                            ) : (
+                              <FaBan className="dropdown-icon text-danger me-2" />
+                            )}
+                            {!quiz.isPublished ? "Publish" : "Unpublish"}
+                          </Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    )}
                   </span>
 
                   {/* Subtext - quiz details */}

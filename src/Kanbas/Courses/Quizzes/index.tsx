@@ -63,7 +63,28 @@ function Quizzes() {
   }, [dispatch, cid]);
 
   const handleAddQuiz = () => {
-    const newQuiz = { ...quiz, course: cid, isPublished: false };
+    let quizStruc = {
+      title: "New Quiz Title",
+      description: "New Description",
+      points: "0",
+      type: "Graded Quiz",
+      group: "Quizzes",
+      isShuffleAnswers: "Yes",
+      timeLimit: "20",
+      isMultipleAttempts: "No",
+      isShowCorrectAnswers: "No",
+      accessCode: "1234",
+      oneQuestionAtATime: "Yes",
+      isWebCamRequired: "No",
+      isLockQuestionsAfterAnswered: "No",
+      due: "2024-05-25 23:59",
+      available: "2024-04-30 00:00",
+      until: "2024-05-25 23:59",
+      course: "",
+      isPublished: false,
+      noOfQuestions: "0",
+    };
+    const newQuiz = { ...quizStruc, course: cid, isPublished: false };
     client.createQuiz(cid, newQuiz).then((quiz) => {
       dispatch(addQuiz(quiz));
       navigate(`/Kanbas/Courses/${cid}/Quizzes/${quiz._id}/Details`);

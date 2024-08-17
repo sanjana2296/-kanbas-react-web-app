@@ -166,7 +166,7 @@ export default function Dashboard({
                       <button
                         onClick={(event) => {
                           event.preventDefault();
-                          deleteCourse(course.number);
+                          deleteCourse(course.cid);
                         }}
                         className="btn btn-danger float-end"
                         id="wd-delete-course-click"

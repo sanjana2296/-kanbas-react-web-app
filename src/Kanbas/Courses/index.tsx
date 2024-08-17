@@ -17,7 +17,7 @@ import FillInTheBlankEditor from "./Quizzes/Editor/Questions/Editors/FillInTheBl
 import MultipleChoiceEditor from "./Quizzes/Editor/Questions/Editors/MultipleChoiceEditor";
 export default function Courses({ courses }: { courses: any[] }) {
   const { cid } = useParams();
-  const course = courses.find((course) => course.number === cid);
+  const course = courses.find((course) => course.number == cid);
   const { pathname } = useLocation();
   return (
     <div id="wd-courses">

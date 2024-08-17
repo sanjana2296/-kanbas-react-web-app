@@ -28,6 +28,7 @@ let quizMain: any;
 import "bootstrap/dist/js/bootstrap.bundle.min";
 function Quizzes() {
   const { cid } = useParams();
+  const role = localStorage.getItem("role");
   const quizList = useSelector(
     (state: KanbasState) => state.quizzesReducer.quizzes
   );
@@ -163,20 +164,22 @@ function Quizzes() {
         </div>
 
         <div className="d-flex justify-content-end">
-          <button
-            className="btn btn-danger btn-sm btn-spacing me-2"
-            style={{ paddingTop: 6 }}
-            onClick={() => {
-              handleAddQuiz();
-              dispatch(setEditMode(false));
-            }}
-          >
-            <FaPlus
-              className="chk-icon-spacing"
-              style={{ fontSize: "0.8em" }}
-            />
-            <span style={{ marginTop: 6 }}>Quiz</span>
-          </button>
+          {role != "STUDENT" && (
+            <button
+              className="btn btn-danger btn-sm btn-spacing me-2"
+              style={{ paddingTop: 6 }}
+              onClick={() => {
+                handleAddQuiz();
+                dispatch(setEditMode(false));
+              }}
+            >
+              <FaPlus
+                className="chk-icon-spacing"
+                style={{ fontSize: "0.8em" }}
+              />
+              <span style={{ marginTop: 6 }}>Quiz</span>
+            </button>
+          )}
           <button
             type="button"
             className="btn btn-outline-secondary btn-sm btn-spacing btn-color"
@@ -230,7 +233,9 @@ function Quizzes() {
                   <span className="float-end">
                     <span
                       onClick={() => {
-                        publishQuiz(quiz);
+                        {
+                          role != "STUDENT" && publishQuiz(quiz);
+                        }
                       }}
                     >
                       {quiz.isPublished ? (
@@ -249,57 +254,58 @@ function Quizzes() {
                         />
                       )}
                     </span>
-
-                    <Dropdown>
-                      <Dropdown.Toggle
-                        as={FaEllipsisV}
-                        style={{
-                          cursor: "pointer",
-                        }}
-                        id="dropdown-basic"
-                      />
-
-                      <Dropdown.Menu className="dropdown-menu-right">
-                        <Dropdown.Item
-                          onClick={() => {
-                            navigate(
-                              `/Kanbas/Courses/${cid}/quizzes/${quiz._id}/Editor`
-                            );
+                    {role != "STUDENT" && (
+                      <Dropdown>
+                        <Dropdown.Toggle
+                          as={FaEllipsisV}
+                          style={{
+                            cursor: "pointer",
                           }}
-                          className="dropdown-item p-2"
-                        >
-                          <BsPencilSquare className="dropdown-icon me-2" />
-                          Edit
-                        </Dropdown.Item>
+                          id="dropdown-basic"
+                        />
 
-                        <div className="dropdown-divider"></div>
+                        <Dropdown.Menu className="dropdown-menu-right">
+                          <Dropdown.Item
+                            onClick={() => {
+                              navigate(
+                                `/Kanbas/Courses/${cid}/quizzes/${quiz._id}/Editor`
+                              );
+                            }}
+                            className="dropdown-item p-2"
+                          >
+                            <BsPencilSquare className="dropdown-icon me-2" />
+                            Edit
+                          </Dropdown.Item>
 
-                        <Dropdown.Item
-                          className="dropdown-item p-2"
-                          onClick={() => handleDeleteQuiz(quiz._id)}
-                        >
-                          <MdDelete className="dropdown-icon me-2" />
-                          Delete
-                        </Dropdown.Item>
+                          <div className="dropdown-divider"></div>
 
-                        <div className="dropdown-divider"></div>
+                          <Dropdown.Item
+                            className="dropdown-item p-2"
+                            onClick={() => handleDeleteQuiz(quiz._id)}
+                          >
+                            <MdDelete className="dropdown-icon me-2" />
+                            Delete
+                          </Dropdown.Item>
 
-                        <Dropdown.Item
-                          className="dropdown-item p-2"
-                          style={{ marginBottom: "1em" }}
-                          onClick={() => {
-                            publishQuiz(quiz);
-                          }}
-                        >
-                          {!quiz.isPublished ? (
-                            <FaCheckCircle className="dropdown-icon text-success me-2" />
-                          ) : (
-                            <FaBan className="dropdown-icon text-danger me-2" />
-                          )}
-                          {!quiz.isPublished ? "Publish" : "Unpublish"}
-                        </Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
+                          <div className="dropdown-divider"></div>
+
+                          <Dropdown.Item
+                            className="dropdown-item p-2"
+                            style={{ marginBottom: "1em" }}
+                            onClick={() => {
+                              publishQuiz(quiz);
+                            }}
+                          >
+                            {!quiz.isPublished ? (
+                              <FaCheckCircle className="dropdown-icon text-success me-2" />
+                            ) : (
+                              <FaBan className="dropdown-icon text-danger me-2" />
+                            )}
+                            {!quiz.isPublished ? "Publish" : "Unpublish"}
+                          </Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    )}
                   </span>
 
                   {/* Subtext - quiz details */}

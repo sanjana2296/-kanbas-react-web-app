@@ -17,7 +17,7 @@ export default function Modules() {
   const { cid } = useParams();
   const { modules } = useSelector((state: any) => state.modulesReducer);
   const dispatch = useDispatch();
-
+  const role = localStorage.getItem("role");
   const removeModule = async (moduleId: string) => {
     await client.deleteModule(moduleId);
     dispatch(deleteModule(moduleId));
@@ -42,15 +42,17 @@ export default function Modules() {
   return (
     <div>
       <div id="wd-modules">
-        <ModulesControls
-          setModuleName={setModuleName}
-          moduleName={moduleName}
-          addModule={() => {
-            createModule({ name: moduleName, course: cid });
-            dispatch(addModule({ name: moduleName, course: cid }));
-            setModuleName("");
-          }}
-        />
+        {role != "STUDENT" && (
+          <ModulesControls
+            setModuleName={setModuleName}
+            moduleName={moduleName}
+            addModule={() => {
+              createModule({ name: moduleName, course: cid });
+              dispatch(addModule({ name: moduleName, course: cid }));
+              setModuleName("");
+            }}
+          />
+        )}
         <br />
         <br />
         <br />
@@ -81,13 +83,15 @@ export default function Modules() {
                     />
                   )}
 
-                  <ModuleControlButtons
-                    moduleId={module._id}
-                    deleteModule={(moduleId) => {
-                      removeModule(moduleId);
-                    }}
-                    editModule={(moduleId) => dispatch(editModule(moduleId))}
-                  />
+                  {role != "STUDENT" && (
+                    <ModuleControlButtons
+                      moduleId={module._id}
+                      deleteModule={(moduleId) => {
+                        removeModule(moduleId);
+                      }}
+                      editModule={(moduleId) => dispatch(editModule(moduleId))}
+                    />
+                  )}
                 </div>
                 {module.lessons && (
                   <ul className="wd-lessons list-group rounded-0">

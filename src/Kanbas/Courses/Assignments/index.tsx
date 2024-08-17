@@ -17,6 +17,7 @@ import { deleteAssignment } from "./reducer";
 import { useNavigate } from "react-router-dom";
 export default function Assignments() {
   const { cid } = useParams();
+  const role = localStorage.getItem("role");
   const dispatch = useDispatch();
   const [results, setResults] = useState<any[]>([]);
   async function getAssignmentsForCourse(cid: String) {
@@ -45,33 +46,35 @@ export default function Assignments() {
 
   return (
     <div id="wd-assignments" className="container mt-4">
-      <div className="d-flex justify-content-between mb-3">
-        <div className="input-group w-50">
-          <span className="input-group-text">
-            <BsSearch />
-          </span>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search..."
-            id="wd-search-assignment"
-          />
+      {role != "STUDENT" && (
+        <div className="d-flex justify-content-between mb-3">
+          <div className="input-group w-50">
+            <span className="input-group-text">
+              <BsSearch />
+            </span>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search..."
+              id="wd-search-assignment"
+            />
+          </div>
+          <div>
+            <button className="btn btn-light me-2" id="wd-add-assignment-group">
+              <FaPlus className="me-2" />
+              Group
+            </button>
+            <button
+              className="btn btn-danger"
+              id="wd-add-assignment"
+              onClick={navigateToEditAssignment}
+            >
+              <FaPlus className="me-2" />
+              Assignment
+            </button>
+          </div>
         </div>
-        <div>
-          <button className="btn btn-light me-2" id="wd-add-assignment-group">
-            <FaPlus className="me-2" />
-            Group
-          </button>
-          <button
-            className="btn btn-danger"
-            id="wd-add-assignment"
-            onClick={navigateToEditAssignment}
-          >
-            <FaPlus className="me-2" />
-            Assignment
-          </button>
-        </div>
-      </div>
+      )}
       <h3
         id="wd-assignments-title"
         className="wd-title p-3 ps-2 bg-light d-flex align-items-center"
@@ -95,12 +98,19 @@ export default function Assignments() {
             <BsGripVertical className="me-2 fs-3" />
             <IoNewspaperSharp />
             <div className="p-3 flex-grow-1">
-              <a
-                className="wd-assignment-link"
-                href={`#/Kanbas/Courses/${cid}/Assignments/${assignment?._id}`}
-              >
-                {assignment && assignment.title}
-              </a>
+              {role != "STUDENT" && (
+                <a
+                  className="wd-assignment-link"
+                  href={`#/Kanbas/Courses/${cid}/Assignments/${assignment?._id}`}
+                >
+                  {assignment && assignment.title}
+                </a>
+              )}
+              {role == "STUDENT" && (
+                <a className="wd-assignment-link">
+                  {assignment && assignment.title}
+                </a>
+              )}
               <br />
               <span style={{ color: "red" }}>Multiple Modules</span> |{" "}
               <b>Not Available until</b> {assignment.availableFrom} at 12:00am |{" "}
@@ -108,10 +118,12 @@ export default function Assignments() {
               <b>Due</b> {assignment.dueDate} at 11:59pm | {assignment.points}{" "}
               pts
             </div>
-            <ModuleControlChecks
-              assignmentId={assignment._id}
-              deleteAssignment={deleteAssignments}
-            />
+            {role != "STUDENT" && (
+              <ModuleControlChecks
+                assignmentId={assignment._id}
+                deleteAssignment={deleteAssignments}
+              />
+            )}
           </li>
         ))}
       </ul>

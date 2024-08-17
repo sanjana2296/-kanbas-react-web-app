@@ -30,6 +30,8 @@ export default function Dashboard({
       const account = await client.profile();
       console.log("acoount", account);
       setRole(account.role);
+      localStorage.setItem("role", account.role);
+
       enCourses = account.courses;
       console.log("enrolledCourses", enCourses);
 

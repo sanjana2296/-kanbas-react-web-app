@@ -10,7 +10,7 @@ import { updateQuiz } from "../reducer";
 
 function QuizDetails() {
   const { cid, quizId } = useParams();
-
+  const role = localStorage.getItem("role");
   const quizList = useSelector(
     (state: KanbasState) => state.quizzesReducer.quizzes
   );
@@ -62,51 +62,61 @@ function QuizDetails() {
     <div className="w-100 px-5 mt-5">
       <div className="d-flex">
         <div className="flex-fill justify-content-start"></div>
+        {role != "STUDENT" && (
+          <div className="d-flex justify-content-end">
+            <Link
+              to={`/Kanbas/Courses/${cid}/quizzes`}
+              className={`btn btn-${
+                quiz.isPublished ? "danger" : "success"
+              } me-1`}
+              onClick={() => handlePublishQuiz(quiz)}
+              aria-pressed={quiz.isPublished}
+              data-toggle="button"
+            >
+              {quiz.isPublished ? (
+                <>
+                  <FaRegEyeSlash /> Unpublish
+                </>
+              ) : (
+                <>
+                  <FaCheck /> Publish
+                </>
+              )}
+            </Link>
 
-        <div className="d-flex justify-content-end">
-          <Link
-            to={`/Kanbas/Courses/${cid}/quizzes`}
-            className={`btn btn-${
-              quiz.isPublished ? "danger" : "success"
-            } me-1`}
-            onClick={() => handlePublishQuiz(quiz)}
-            aria-pressed={quiz.isPublished}
-            data-toggle="button"
-          >
-            {quiz.isPublished ? (
-              <>
-                <FaRegEyeSlash /> Unpublish
-              </>
-            ) : (
-              <>
-                <FaCheck /> Publish
-              </>
-            )}
-          </Link>
+            <Link
+              to={`/Kanbas/Courses/${cid}/quizzes/${quizId}/Preview`}
+              className="btn btn-primary me-1"
+            >
+              Preview
+            </Link>
 
+            <Link
+              to={`/Kanbas/Courses/${cid}/quizzes/${quizId}/Editor`}
+              className="btn btn-warning me-1"
+            >
+              <FaPencilAlt />
+              Edit
+            </Link>
+
+            {/* Context Menu */}
+            <button
+              type="button"
+              className="btn btn-outline-secondary btn-sm btn-spacing btn-color"
+            >
+              <FaEllipsisV />
+            </button>
+          </div>
+        )}
+
+        {role == "STUDENT" && (
           <Link
             to={`/Kanbas/Courses/${cid}/quizzes/${quizId}/Preview`}
             className="btn btn-primary me-1"
           >
-            Preview
+            Start Quiz
           </Link>
-
-          <Link
-            to={`/Kanbas/Courses/${cid}/quizzes/${quizId}/Editor`}
-            className="btn btn-warning me-1"
-          >
-            <FaPencilAlt />
-            Edit
-          </Link>
-
-          {/* Context Menu */}
-          <button
-            type="button"
-            className="btn btn-outline-secondary btn-sm btn-spacing btn-color"
-          >
-            <FaEllipsisV />
-          </button>
-        </div>
+        )}
       </div>
 
       <hr />

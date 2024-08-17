@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import * as client from "./client";
 import { Link } from "react-router-dom";
-import { FaUserCircle ,FaPlus} from "react-icons/fa";
+import { FaUserCircle, FaPlus } from "react-icons/fa";
 import PeopleDetails from "./Details";
 export default function PeopleTable() {
   const [users, setUsers] = useState<any[]>([]);
 
   const [role, setRole] = useState("");
+  const roleName = localStorage.getItem("role");
   const filterUsersByRole = async (role: string) => {
     setRole(role);
     if (role) {
@@ -40,16 +41,16 @@ export default function PeopleTable() {
       password: "password123",
       section: "S101",
       role: "STUDENT",
-      email:"abc@abc.com",
-      loginId: generateLoginId()
+      email: "abc@abc.com",
+      loginId: generateLoginId(),
     });
     setUsers([...users, user]);
   };
   const generateLoginId = () => {
     const randomNumber = Math.floor(Math.random() * 900000000) + 100000000;
-    const formattedNumber = String(randomNumber).padStart(9, '0');
-    const loginId = formattedNumber + 'S';
-      return loginId;
+    const formattedNumber = String(randomNumber).padStart(9, "0");
+    const loginId = formattedNumber + "S";
+    return loginId;
   };
 
   useEffect(() => {
@@ -57,10 +58,15 @@ export default function PeopleTable() {
   }, []);
   return (
     <div id="wd-people-table">
-      <button onClick={createUser} className="float-end btn btn-danger wd-add-people">
-        <FaPlus className="me-2" />
-        People
-      </button>
+      {roleName != "STUDENT" && (
+        <button
+          onClick={createUser}
+          className="float-end btn btn-danger wd-add-people"
+        >
+          <FaPlus className="me-2" />
+          People
+        </button>
+      )}
       <input
         onChange={(e) => filterUsersByName(e.target.value)}
         placeholder="Search people"
@@ -91,11 +97,17 @@ export default function PeopleTable() {
         <tbody>
           {users.map((user: any) => (
             <tr key={user._id}>
-              <td style={{color:"red"}} className="wd-full-name text-nowrap">
-                <Link to={`${user.loginId}`}>
+              <td style={{ color: "red" }} className="wd-full-name text-nowrap">
+                {roleName != "STUDENT" && (
+                  <Link to={`${user.loginId}`}>
+                    <FaUserCircle className="text-secondary me-2 fs-1" />
+                  </Link>
+                )}
+
+                {roleName == "STUDENT" && (
                   <FaUserCircle className="text-secondary me-2 fs-1" />
-                </Link>
-                <span className="wd-first-name" >{user.firstName} </span>
+                )}
+                <span className="wd-first-name">{user.firstName} </span>
 
                 <span className="wd-last-name">{user.lastName}</span>
               </td>

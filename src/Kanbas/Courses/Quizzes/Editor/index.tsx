@@ -6,6 +6,8 @@ import { BiSolidCircleHalf } from "react-icons/bi";
 import useQuizData from "./useQuizData";
 import { setQuiz } from "../reducer";
 import { FaRegEyeSlash } from "react-icons/fa6";
+import * as client from "../client";
+import { updateQuiz } from "../reducer";
 
 function formatDateToLocalInputString(utcDateString: any) {
   const date = new Date(utcDateString);
@@ -22,11 +24,21 @@ function QuizEditor() {
   const { quiz, updateQuizData } = useQuizData(quizId, cid);
 
   const handleSave = async () => {
-    await updateQuizData(quiz);
+    // await updateQuizData(quiz);
+    const updatedQuiz = { ...quiz };
+
+    client.updateQuiz(updatedQuiz).then((quiz) => {
+      dispatch(updateQuiz(updatedQuiz));
+    });
     navigate(`/Kanbas/Courses/${cid}/quizzes`);
   };
   const handleSaveAndPublish = async () => {
-    await updateQuizData({ ...quiz, isPublished: true });
+    // await updateQuizData({ ...quiz, isPublished: true });
+    const updatedQuiz = { ...quiz, isPublished: true };
+
+    client.updateQuiz(updatedQuiz).then((quiz) => {
+      dispatch(updateQuiz(updatedQuiz));
+    });
     navigate(`/Kanbas/Courses/${cid}/quizzes`);
   };
 

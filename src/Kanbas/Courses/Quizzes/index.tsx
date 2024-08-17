@@ -24,27 +24,27 @@ import { Dropdown } from "react-bootstrap";
 import { MdDelete } from "react-icons/md";
 import { IoRocketOutline } from "react-icons/io5";
 import * as client from "./client";
-
-import * as profileClient from "../../Account/client";
+let quizMain: any;
 import "bootstrap/dist/js/bootstrap.bundle.min";
-let account: any;
 function Quizzes() {
   const { cid } = useParams();
   const quizList = useSelector(
     (state: KanbasState) => state.quizzesReducer.quizzes
   );
-  const quiz = useSelector((state: KanbasState) => state.quizzesReducer.quiz);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const fetchProfile = async () => {
+  const fetchQuiz = async () => {
     try {
-      account = await profileClient.profile();
+      quizMain = await client.findQuizzesForCourse(cid);
+      dispatch(setQuizzes(quizMain));
     } catch (err: any) {}
   };
   useEffect(() => {
-    fetchProfile();
+    fetchQuiz();
   }, []);
+
+  const quiz = useSelector((state: KanbasState) => state.quizzesReducer.quiz);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [searchTerm, setSearchTerm] = useState("");
 

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { KanbasState } from "../../store";
 import * as client from "./client";
+import * as userClient from "../../Account/client";
 import { setQuiz } from "./reducer";
 import { setQuestions } from "./Editor/Questions/questionsReducer";
 import { FaLongArrowAltLeft } from "react-icons/fa";
@@ -10,6 +11,9 @@ import dayjs from "dayjs";
 
 function QuizPreview() {
   const { cid, quizId } = useParams();
+  const [message, setMessage] = useState("");
+  const loginId = localStorage.getItem("loginId");
+  const role = localStorage.getItem("role");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const quiz = useSelector((state: KanbasState) => state.quizzesReducer.quiz);
@@ -35,6 +39,36 @@ function QuizPreview() {
     fetchQuizAndQuestions();
   }, [dispatch, quizId]);
 
+  useEffect(() => {
+    const fetchQuiz = async () => {
+      try {
+        const isQuiz = await userClient.fetchQuiz(loginId, quizId);
+
+        if (isQuiz && isQuiz.quiz) {
+          setMessage("Quiz has been already submitted by the user");
+
+          for (var i = 0; i < isQuiz.quiz.length; i++) {
+            const quizItem = isQuiz.quiz[0];
+            if (quizItem && typeof quizItem === "object") {
+              const key = Object.keys(quizItem)[0];
+              const value = quizItem[key];
+
+              console.log(`Key: ${key}`);
+              console.log(`Value: ${value}`);
+
+              const answer = value as string;
+              handleAnswerChange(key, answer);
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching quiz:", error);
+      }
+    };
+
+    fetchQuiz();
+  }, [loginId, quizId]);
+
   const handleAnswerChange = (
     questionId: string,
     answer: string | string[]
@@ -47,6 +81,16 @@ function QuizPreview() {
 
   const handleSubmitQuiz = async () => {
     try {
+      const fetchedQuiz = await client.getQuiz(quizId!);
+
+      const points = calculatePoints(questions, userAnswers);
+      const req = {
+        id: quizId,
+        points: points,
+        quiz: userAnswers,
+      };
+      const loginId = localStorage.getItem("loginId");
+      const quiz = await userClient.submitQuiz(loginId, req);
       alert("Quiz submitted successfully!");
       navigate(`/Kanbas/Courses/${cid}/quizzes`);
     } catch (error) {
@@ -55,6 +99,47 @@ function QuizPreview() {
     }
   };
 
+  type Question = {
+    _id: string;
+    type: string;
+    options: string[];
+    blanks: string[];
+    correctAnswer: number;
+    points: number;
+  };
+  const calculatePoints = (
+    questions: Question[],
+    userAnswers: Record<string, string | string[]>
+  ): number => {
+    let totalPoints = 0;
+    questions.forEach((question) => {
+      const userAnswer = userAnswers[question._id];
+
+      if (
+        question.type === "multiple_choice" ||
+        question.type === "true_false"
+      ) {
+        const correctChoice = question.options[question.correctAnswer];
+        if (userAnswer == correctChoice) {
+          totalPoints += question.points;
+          console.log("totalPoints:", totalPoints);
+        }
+      }
+      // else if (question.type === "fill_in_the_blanks") {
+      //   // For fill-in-the-blanks questions
+      //   const correctAnswers = question.blanks;
+      //   const userAnswersArray = userAnswer as string[];
+      //   if (
+      //     correctAnswers.length === userAnswersArray.length &&
+      //     correctAnswers.every((ans, index) => ans === userAnswersArray[index])
+      //   ) {
+      //     totalPoints += question.points;
+      //   }
+      // }
+    });
+
+    return totalPoints;
+  };
   const renderQuestionContent = (question: any) => {
     switch (question.type) {
       case "multiple_choice":
@@ -69,7 +154,13 @@ function QuizPreview() {
                     name={`question-${question._id}`}
                     id={`choice-${question._id}-${index}`}
                     value={choice}
+                    checked={
+                      userAnswers[question._id]?.[0] === choice ||
+                      (userAnswers[question._id] === undefined &&
+                        question.correctAnswer === choice)
+                    }
                     defaultChecked={question.correctAnswer === index}
+                    disabled={message ? true : false}
                     onChange={() => handleAnswerChange(question._id, [choice])}
                   />
                   <label
@@ -77,11 +168,13 @@ function QuizPreview() {
                     htmlFor={`choice-${question._id}-${index}`}
                   >
                     {String.fromCharCode(65 + index)}. {choice}
-                    <span style={{ marginLeft: 15 }}>
-                      {question.correctAnswer === index && (
-                        <FaLongArrowAltLeft color="green" />
-                      )}
-                    </span>
+                    {role == "STUDENT" && message && (
+                      <span style={{ marginLeft: 15 }}>
+                        {question.correctAnswer === index && (
+                          <FaLongArrowAltLeft color="green" />
+                        )}
+                      </span>
+                    )}
                   </label>
                 </div>
               </li>
@@ -100,6 +193,12 @@ function QuizPreview() {
                     name={`question-${question._id}`}
                     id={`choice-${question._id}-${index}`}
                     value={choice}
+                    checked={
+                      userAnswers[question._id]?.[0] === choice ||
+                      (userAnswers[question._id] === undefined &&
+                        question.correctAnswer === index)
+                    }
+                    disabled={message ? true : false}
                     defaultChecked={question.correctAnswer === index}
                     onChange={() => handleAnswerChange(question._id, [choice])}
                   />
@@ -108,12 +207,13 @@ function QuizPreview() {
                     htmlFor={`choice-${question._id}-${index}`}
                   >
                     {choice}
-
-                    <span style={{ marginLeft: 15 }}>
-                      {question.correctAnswer === index && (
-                        <FaLongArrowAltLeft color="green" />
-                      )}
-                    </span>
+                    {role == "STUDENT" && message && (
+                      <span style={{ marginLeft: 15 }}>
+                        {question.correctAnswer === index && (
+                          <FaLongArrowAltLeft color="green" />
+                        )}
+                      </span>
+                    )}
                   </label>
                 </div>
               </li>
@@ -133,7 +233,11 @@ function QuizPreview() {
                   className="form-control"
                   id={`blank-${question._id}-${index}`}
                   placeholder="Enter your answer"
-                  value={question.blanks[index] || ""}
+                  disabled={message ? true : false}
+                  // value={question.blanks[index] || ""}
+                  value={
+                    ((userAnswers[question._id] as string[]) || [])[index] || ""
+                  }
                   onChange={(e) => {
                     const updatedAnswer = [
                       ...((userAnswers[question._id] as string[]) ||
@@ -160,7 +264,8 @@ function QuizPreview() {
         {dayjs(quiz?.due).format("h:mm A")}
       </p>
       <p>
-        <strong>Instructions:</strong> {quiz?.description}
+        <strong>Instructions:</strong> {quiz?.description} <br />
+        <strong>Total points:</strong> {quiz?.points}
       </p>
 
       <h3>Questions</h3>
@@ -180,9 +285,11 @@ function QuizPreview() {
           </div>
         </div>
       ))}
-      <button className="btn btn-danger" onClick={handleSubmitQuiz}>
-        Submit Quiz
-      </button>
+      {!message && (
+        <button className="btn btn-danger" onClick={handleSubmitQuiz}>
+          Submit Quiz
+        </button>
+      )}
     </div>
   );
 }

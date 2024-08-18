@@ -28,12 +28,11 @@ export default function Dashboard({
     try {
       setShowCourse("");
       const account = await client.profile();
-      console.log("acoount", account);
       setRole(account.role);
       localStorage.setItem("role", account.role);
+      localStorage.setItem("loginId", account.loginId);
 
       enCourses = account.courses;
-      console.log("enrolledCourses", enCourses);
 
       enrolledCourses = courses.filter((course) =>
         enCourses.includes(course.number)
@@ -44,7 +43,6 @@ export default function Dashboard({
   };
   const removeCourse = async (courseId: any) => {
     const account = await client.profile();
-    console.log("acoount", account);
     await client.removeCourse(account.loginId, courseId);
     await fetchProfile();
   };

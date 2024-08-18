@@ -7,6 +7,16 @@ export const enrollCourse = async (user: any, course: any) => {
   return response.data;
 };
 
+export const submitQuiz = async (user: any, quiz: any) => {
+  const response = await axios.post(`${USERS_API}/${user}/submitQuiz`, quiz);
+  return response.data;
+};
+
+export const fetchQuiz = async (user: any, quizId: any) => {
+  const response = await axios.get(`${USERS_API}/${user}/fetchQuiz/${quizId}`);
+  return response.data;
+};
+
 export const removeCourse = async (user: any, course: any) => {
   const response = await axios.post(
     `${USERS_API}/${user}/removeCourse/${course}`

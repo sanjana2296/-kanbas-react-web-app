@@ -108,9 +108,13 @@ function Questions() {
   };
 
   const handleSave = async () => {
-    const updatedQuiz = { ...quiz, points: 100 };
+    let totalPoints = 0;
+    questions.forEach((question) => {
+      totalPoints += question.points;
+    });
+    const updatedQuiz = { ...quiz, points: totalPoints };
     await updateQuizData(updatedQuiz);
-    navigate(`/Kanbas/Courses/${cid}/quizzes/${quizId}`);
+    navigate(`/Kanbas/Courses/${cid}/quizzes`);
   };
 
   const handleSaveAndPublish = async () => {

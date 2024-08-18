@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaEllipsisV } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { FaCheck, FaRegEyeSlash, FaPencilAlt } from "react-icons/fa";
@@ -6,11 +6,15 @@ import "./index.css";
 import { KanbasState } from "../../../store";
 import { useDispatch, useSelector } from "react-redux";
 import * as client from "../client";
+import * as userClient from "../../../Account/client";
 import { updateQuiz } from "../reducer";
 
 function QuizDetails() {
   const { cid, quizId } = useParams();
+  const [message, setMessage] = useState("");
+  const [points, setPoints] = useState("");
   const role = localStorage.getItem("role");
+  const loginId = localStorage.getItem("loginId");
   const quizList = useSelector(
     (state: KanbasState) => state.quizzesReducer.quizzes
   );
@@ -24,6 +28,16 @@ function QuizDetails() {
     quiz = selectedQuiz;
   }
 
+  useEffect(() => {
+    const fetchQuiz = async () => {
+      const isQuiz = await userClient.fetchQuiz(loginId, quizId);
+      if (isQuiz) {
+        setMessage("Quiz has been already submitted by the user");
+        setPoints(isQuiz?.points);
+      }
+    };
+    fetchQuiz();
+  });
   const dispatch = useDispatch();
 
   const handlePublishQuiz = (quiz: any) => {
@@ -109,12 +123,20 @@ function QuizDetails() {
           </div>
         )}
 
-        {role == "STUDENT" && (
+        {role == "STUDENT" && !message && (
           <Link
             to={`/Kanbas/Courses/${cid}/quizzes/${quizId}/Preview`}
             className="btn btn-primary me-1"
           >
             Start Quiz
+          </Link>
+        )}
+        {role == "STUDENT" && message && (
+          <Link
+            to={`/Kanbas/Courses/${cid}/quizzes/${quizId}/Preview`}
+            className="btn btn-primary me-1"
+          >
+            Check submitted quiz
           </Link>
         )}
       </div>
@@ -123,6 +145,13 @@ function QuizDetails() {
 
       {/* Quiz Details */}
       <h2>{quiz.title}</h2>
+
+      {role == "STUDENT" && (
+        <h4 className="published-text">
+          {message} <br />
+          Points scored: {points}
+        </h4>
+      )}
 
       <div className="container">
         {/* <!-- Type--> */}

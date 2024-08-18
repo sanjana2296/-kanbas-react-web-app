@@ -183,10 +183,12 @@ function QuizEditor() {
                   dispatch(setQuiz({ ...quiz, type: e.target.value }));
                 }}
               >
-                <option value="Graded Quiz">Graded Quiz</option>
-                <option value="Ungraded Quiz">Ungraded Quiz</option>
-                <option value="Graded Exam">Graded Exam</option>
-                <option value="Ungraded Exam">Ungraded Exam</option>
+                <option defaultChecked value="Graded Quiz">
+                  Graded Quiz
+                </option>
+                <option value="Practice Quiz">Practice Quiz</option>
+                <option value="Graded Survey">Graded Survey</option>
+                <option value="Ungraded Survey">Ungraded Survey</option>
               </select>
             </div>
           </div>
@@ -207,10 +209,10 @@ function QuizEditor() {
                   dispatch(setQuiz({ ...quiz, group: e.target.value }));
                 }}
               >
-                <option value="ASSIGNMENTS">ASSIGNMENTS</option>
-                <option value="One">One</option>
-                <option value="Two">Two</option>
-                <option value="Three">Three</option>
+                <option value="Quizzes">Quizzes</option>
+                <option value="Exams">Exams</option>
+                <option value="Assignments">Assignments</option>
+                <option value="Project">Project</option>
               </select>
             </div>
           </div>
@@ -237,7 +239,7 @@ function QuizEditor() {
               />
               <label className="form-check-label">Shuffle Answers</label>
             </div>
-            <div className="form-check mb-3">
+            {/* <div className="form-check mb-3">
               <input
                 type="checkbox"
                 checked={quiz.isMultipleAttempts === "Yes"}
@@ -252,8 +254,53 @@ function QuizEditor() {
                 className="form-check-input"
               />
               <label className="form-check-label">Multiple Attempts</label>
+            </div> */}
+
+            <div className="row my-3">
+              <div className="col-2">
+                <div className="d-flex w-100 justify-content-end">
+                  <label htmlFor="multiple-attempts" className="form-label">
+                    Multiple Attempts
+                  </label>
+                </div>
+              </div>
+              <div className="col-5">
+                <select
+                  id="multiple-attempts"
+                  className="form-select"
+                  value={quiz.isMultipleAttempts}
+                  onChange={(e) => {
+                    dispatch(
+                      setQuiz({ ...quiz, isMultipleAttempts: e.target.value })
+                    );
+                  }}
+                >
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </div>
             </div>
 
+            <div className="mb-3">
+              <label>How Many Attempts</label>
+              <input
+                value={quiz.noOfAttempts || 1}
+                disabled={quiz.isMultipleAttempts == "No" ? true : false}
+                onChange={(e) =>
+                  dispatch(setQuiz({ ...quiz, noOfAttempts: e.target.value }))
+                }
+                className="form-control mb-2"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label>Points</label>
+              <input
+                value={quiz.points || 0}
+                disabled={true}
+                className="form-control mb-2"
+              />
+            </div>
             <div className="mb-3">
               <label>Show Correct Answers</label>
               <select

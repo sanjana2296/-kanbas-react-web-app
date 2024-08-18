@@ -11,8 +11,8 @@ export default function Signup() {
 
   const signup = async () => {
     try {
-        const currentUser =  await client.signup(user);
-        dispatch(setCurrentUser(currentUser));
+      const currentUser = await client.signup(user);
+      dispatch(setCurrentUser(currentUser));
       navigate("/Kanbas/Account/Profile");
     } catch (err: any) {
       setError(err.response.data.message);
@@ -28,14 +28,26 @@ export default function Signup() {
         onChange={(e) => setUser({ ...user, username: e.target.value })}
         className="wd-username form-control mb-2"
         placeholder="username"
-      />
+      />{" "}
       <input
         value={user.password}
         onChange={(e) => setUser({ ...user, password: e.target.value })}
         type="password"
         className="wd-password form-control mb-2"
         placeholder="password"
-      />
+      />{" "}
+      <select
+        className="form-select"
+        id="role"
+        onChange={(e) => setUser({ ...user, role: e.target.value })}
+        value={user.role}
+      >
+        <option value="USER">User</option>
+        <option value="ADMIN">Admin</option>
+        <option value="FACULTY">Faculty</option>
+        <option value="STUDENT">Student</option>
+      </select>{" "}
+      <br />
       <button onClick={signup} className="wd-signup-btn btn btn-primary mb-2">
         {" "}
         Sign up{" "}

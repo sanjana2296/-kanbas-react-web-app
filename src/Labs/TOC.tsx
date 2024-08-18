@@ -17,7 +17,7 @@ export default function TOC() {
           Lab 1
         </a>
       </li>
-      <li className="nav-item">
+      {/* <li className="nav-item">
         <a
           id="wd-a2"
           href="#/Labs/Lab2"
@@ -52,7 +52,7 @@ export default function TOC() {
         >
           Lab 5
         </a>
-      </li>
+      </li> */}
       <li className="nav-item">
         <a id="wd-k" href="#/Kanbas" className="nav-link">
           Kanbas
@@ -61,7 +61,7 @@ export default function TOC() {
       <li className="nav-item">
         <a
           id="wd-k"
-          href="https://github.com/sanjana2296/kanbas-react-web-app"
+          href="https://github.com/sanjana2296/kanbas-react-web-app/tree/project"
           className="nav-link"
         >
           My GitHub
@@ -70,7 +70,7 @@ export default function TOC() {
       <li className="nav-item">
         <a
           id="wd-k"
-          href="https://github.com/sanjana2296/kanbas-node-server-app"
+          href="https://github.com/sanjana2296/kanbas-node-server-app/tree/project"
           className="nav-link"
         >
           My Node Server

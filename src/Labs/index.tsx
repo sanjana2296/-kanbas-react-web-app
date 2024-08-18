@@ -9,8 +9,11 @@ import Lab5 from "./Lab5";
 export default function Labs() {
   return (
     <div id="wd-labs">
-      <h3>Name: Sanjana Poojary</h3>
+      <h3>Project group name: WEB AVENGERS</h3>
       <h3>Section: WEBDEV Summer2 2024</h3>
+      <h4>Name: Sanjana Poojary</h4>
+      <h4>Name: Manasa Rao</h4>
+      <h4>Name: Saumya Gupta</h4>
       <h1>Labs</h1>
       <TOC />
       <Routes>

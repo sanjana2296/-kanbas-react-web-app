@@ -73,6 +73,7 @@ function Quizzes() {
       isShuffleAnswers: "Yes",
       timeLimit: "20",
       isMultipleAttempts: "No",
+      noOfAttempts: "1",
       isShowCorrectAnswers: "No",
       accessCode: "1234",
       oneQuestionAtATime: "Yes",

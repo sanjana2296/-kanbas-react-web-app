@@ -16,6 +16,8 @@ function QuizPreview() {
   const role = localStorage.getItem("role");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [quizAnswers, setQuizAnswers] = useState("");
+  let newAnswers: { id: string; answer: string[] }[] = [];
   const quiz = useSelector((state: KanbasState) => state.quizzesReducer.quiz);
   const questions = useSelector(
     (state: KanbasState) => state.questionsReducer.questions
@@ -49,10 +51,12 @@ function QuizPreview() {
 
           for (var i = 0; i < isQuiz.quiz.length; i++) {
             const quizItem = isQuiz.quiz[0];
+            setQuizAnswers(quizItem);
+            console.log("quizItem::", JSON.stringify(quizItem));
             if (quizItem && typeof quizItem === "object") {
               const key = Object.keys(quizItem)[0];
               const value = quizItem[key];
-
+              newAnswers.push({ id: key, answer: value });
               console.log(`Key: ${key}`);
               console.log(`Value: ${value}`);
 
@@ -61,6 +65,8 @@ function QuizPreview() {
             }
           }
         }
+        console.log("newAnswers:", newAnswers);
+        console.log("quizAnswers:", quizAnswers);
       } catch (error) {
         console.error("Error fetching quiz:", error);
       }
@@ -155,11 +161,13 @@ function QuizPreview() {
                     id={`choice-${question._id}-${index}`}
                     value={choice}
                     checked={
-                      userAnswers[question._id]?.[0] === choice ||
-                      (userAnswers[question._id] === undefined &&
-                        question.correctAnswer === choice)
+                      quizAnswers
+                        ? quizAnswers[question._id]?.[0] === choice
+                        : userAnswers[question._id]?.[0] === choice ||
+                          (userAnswers[question._id] === undefined &&
+                            question.correctAnswer === choice)
                     }
-                    defaultChecked={question.correctAnswer === index}
+                    // defaultChecked={question.correctAnswer === index}
                     disabled={message ? true : false}
                     onChange={() => handleAnswerChange(question._id, [choice])}
                   />
@@ -194,12 +202,14 @@ function QuizPreview() {
                     id={`choice-${question._id}-${index}`}
                     value={choice}
                     checked={
-                      userAnswers[question._id]?.[0] === choice ||
-                      (userAnswers[question._id] === undefined &&
-                        question.correctAnswer === index)
+                      quizAnswers
+                        ? quizAnswers[question._id]?.[0] === choice
+                        : userAnswers[question._id]?.[0] === choice ||
+                          (userAnswers[question._id] === undefined &&
+                            question.correctAnswer === index)
                     }
                     disabled={message ? true : false}
-                    defaultChecked={question.correctAnswer === index}
+                    // defaultChecked={question.correctAnswer === index}
                     onChange={() => handleAnswerChange(question._id, [choice])}
                   />
                   <label

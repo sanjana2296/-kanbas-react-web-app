@@ -90,6 +90,7 @@ function QuizPreview() {
       const fetchedQuiz = await client.getQuiz(quizId!);
 
       const points = calculatePoints(questions, userAnswers);
+      console.log("userAnswers:", userAnswers);
       console.log("calculated points:", points);
       const req = {
         id: quizId,
@@ -131,18 +132,16 @@ function QuizPreview() {
           totalPoints += question.points;
           console.log("totalPoints:", totalPoints);
         }
+      } else if (question.type === "fill_in_the_blanks") {
+        const correctAnswers = question.blanks;
+        const userAnswersArray = userAnswer as string[];
+        if (
+          correctAnswers.length === userAnswersArray.length &&
+          correctAnswers.every((ans, index) => ans === userAnswersArray[index])
+        ) {
+          totalPoints += question.points;
+        }
       }
-      // else if (question.type === "fill_in_the_blanks") {
-      //   // For fill-in-the-blanks questions
-      //   const correctAnswers = question.blanks;
-      //   const userAnswersArray = userAnswer as string[];
-      //   if (
-      //     correctAnswers.length === userAnswersArray.length &&
-      //     correctAnswers.every((ans, index) => ans === userAnswersArray[index])
-      //   ) {
-      //     totalPoints += question.points;
-      //   }
-      // }
     });
 
     return totalPoints;
@@ -247,7 +246,12 @@ function QuizPreview() {
                   disabled={message ? true : false}
                   // value={question.blanks[index] || ""}
                   value={
-                    ((userAnswers[question._id] as string[]) || [])[index] || ""
+                    quizAnswers
+                      ? ((quizAnswers[question._id] as unknown as string[]) ||
+                          [])[index] || ""
+                      : ((userAnswers[question._id] as string[]) || [])[
+                          index
+                        ] || ""
                   }
                   onChange={(e) => {
                     const updatedAnswer = [
@@ -257,7 +261,12 @@ function QuizPreview() {
                     updatedAnswer[index] = e.target.value;
                     handleAnswerChange(question._id, updatedAnswer);
                   }}
-                />
+                />{" "}
+                {role == "STUDENT" && message && (
+                  <span style={{ marginLeft: 15, color: "green" }}>
+                    Correct Answer : {question.blanks[index]}
+                  </span>
+                )}
               </div>
             ))}
           </div>

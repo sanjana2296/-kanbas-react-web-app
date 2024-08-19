@@ -175,6 +175,16 @@ function QuizDetails() {
           </div>
         </div>
 
+        {/* No of questions */}
+        <div className="row g-4">
+          <div className="col-3 details-text">
+            <h5>Number of questions</h5>
+          </div>
+          <div className="col-6 text-start details-value">
+            <div className="input-group mb-3">{quiz.noOfQuestions}</div>
+          </div>
+        </div>
+
         {/* Group */}
         <div className="row g-4">
           <div className="col-3 details-text">

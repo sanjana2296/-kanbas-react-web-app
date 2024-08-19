@@ -192,6 +192,15 @@ function QuizEditor() {
               </select>
             </div>
           </div>
+
+          <div className="mb-3">
+            <label>Points</label>
+            <input
+              value={quiz.points || 0}
+              disabled={true}
+              className="form-control mb-2"
+            />
+          </div>
           <div className="row my-3">
             <div className="col-2">
               <div className="d-flex w-100 justify-content-end">
@@ -293,14 +302,6 @@ function QuizEditor() {
               />
             </div>
 
-            <div className="mb-3">
-              <label>Points</label>
-              <input
-                value={quiz.points || 0}
-                disabled={true}
-                className="form-control mb-2"
-              />
-            </div>
             <div className="mb-3">
               <label>Show Correct Answers</label>
               <select

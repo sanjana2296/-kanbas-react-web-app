@@ -2,14 +2,15 @@ import * as client from "./client";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setCurrentUser } from "./reducer"
+import { setCurrentUser } from "./reducer";
+let account: any;
 export default function Profile() {
   const [profile, setProfile] = useState<any>({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const fetchProfile = async () => {
     try {
-      const account = await client.profile();
+      account = await client.profile();
       console.log(account);
       setProfile(account);
     } catch (err: any) {
@@ -21,6 +22,11 @@ export default function Profile() {
     await client.signout();
     dispatch(setCurrentUser(null));
     navigate("/Kanbas/Account/Signin");
+  };
+
+  const updateProfile = async () => {
+    await client.updateProfile(account.loginId, profile);
+    fetchProfile();
   };
 
   useEffect(() => {
@@ -130,6 +136,14 @@ export default function Profile() {
               <option value="STUDENT">Student</option>
             </select>
           </div>
+          <br />
+          <button
+            onClick={updateProfile}
+            className="wd-signout-btn btn btn-success w-100"
+          >
+            Update
+          </button>
+          <br />
           <button
             onClick={signout}
             className="wd-signout-btn btn btn-danger w-100"

@@ -47,3 +47,11 @@ export const signout = async () => {
   const response = await axiosWithCredentials.post(`${USERS_API}/signout`);
   return response.data;
 };
+
+export const updateProfile = async (userId: any, user: any) => {
+  const response = await axiosWithCredentials.post(
+    `${USERS_API}/updateProfile/${userId}`,
+    user
+  );
+  return response.data;
+};

@@ -52,7 +52,7 @@ function QuizPreview() {
           for (var i = 0; i < isQuiz.quiz.length; i++) {
             const quizItem = isQuiz.quiz[0];
             setQuizAnswers(quizItem);
-            console.log("quizItem::", JSON.stringify(quizItem));
+            console.log("quizItem ::", JSON.stringify(quizItem));
             if (quizItem && typeof quizItem === "object") {
               const key = Object.keys(quizItem)[0];
               const value = quizItem[key];

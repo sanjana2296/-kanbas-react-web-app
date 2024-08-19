@@ -206,7 +206,7 @@ function QuizPreview() {
                         ? quizAnswers[question._id]?.[0] === choice
                         : userAnswers[question._id]?.[0] === choice ||
                           (userAnswers[question._id] === undefined &&
-                            question.correctAnswer === index)
+                            question.correctAnswer === choice)
                     }
                     disabled={message ? true : false}
                     // defaultChecked={question.correctAnswer === index}

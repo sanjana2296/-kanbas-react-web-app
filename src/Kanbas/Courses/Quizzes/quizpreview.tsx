@@ -8,6 +8,7 @@ import { setQuiz } from "./reducer";
 import { setQuestions } from "./Editor/Questions/questionsReducer";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import dayjs from "dayjs";
+import GreenCheckmark from "./GreenCheckmark";
 
 function QuizPreview() {
   const { cid, quizId } = useParams();
@@ -292,7 +293,43 @@ function QuizPreview() {
       {questions.map((question) => (
         <div key={question._id} className="card mb-3">
           <div className="card-header">
-            <h5 className="mb-0">{question.title}</h5>
+            <h5 className="mb-0">
+              {question.title}{" "}
+              {role == "STUDENT" &&
+                message &&
+                question.type != "fill_in_the_blanks" &&
+                quizAnswers[question._id]?.[0] ==
+                  question.options[question.correctAnswer] && (
+                  <span style={{ color: "green" }}>
+                    <GreenCheckmark />
+                  </span>
+                )}
+              {role == "STUDENT" &&
+                message &&
+                question.type != "fill_in_the_blanks" &&
+                quizAnswers[question._id]?.[0] !=
+                  question.options[question.correctAnswer] && (
+                  <span style={{ color: "red" }}> X</span>
+                )}
+              {role == "STUDENT" &&
+                message &&
+                question.type == "fill_in_the_blanks" &&
+                question.blanks.every(
+                  (ans: any, index: any) =>
+                    ans === quizAnswers[question._id]?.[index]
+                ) && (
+                  <span style={{ color: "green" }}>
+                    <GreenCheckmark />
+                  </span>
+                )}
+              {role == "STUDENT" &&
+                message &&
+                question.type == "fill_in_the_blanks" &&
+                question.blanks.every(
+                  (ans: any, index: any) =>
+                    ans != quizAnswers[question._id]?.[index]
+                ) && <span style={{ color: "red" }}> X</span>}
+            </h5>
             <span>Points: {question.points}</span>
           </div>
           <div className="card-body">

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaCheckCircle, FaEllipsisV, FaRegEyeSlash } from "react-icons/fa";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import useQuizData from "../useQuizData";
@@ -112,7 +112,11 @@ function Questions() {
     questions.forEach((question) => {
       totalPoints += question.points;
     });
-    const updatedQuiz = { ...quiz, points: totalPoints };
+    const updatedQuiz = {
+      ...quiz,
+      points: totalPoints,
+      noOfQuestions: questions.length,
+    };
     await updateQuizData(updatedQuiz);
     navigate(`/Kanbas/Courses/${cid}/quizzes`);
   };

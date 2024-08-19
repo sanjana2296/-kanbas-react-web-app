@@ -225,6 +225,16 @@ function QuizDetails() {
           </div>
         </div>
 
+        {/* Number of Attempts */}
+        <div className="row g-4">
+          <div className="col-3 details-text">
+            <h5>Number of Attempts</h5>
+          </div>
+          <div className="col-6 text-start details-value">
+            <div className="input-group mb-3">{quiz.noOfAttempts || 1}</div>
+          </div>
+        </div>
+
         {/* Show Correct Answers */}
         <div className="row g-4">
           <div className="col-3 details-text">

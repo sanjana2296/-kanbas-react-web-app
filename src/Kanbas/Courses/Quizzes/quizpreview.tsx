@@ -90,6 +90,7 @@ function QuizPreview() {
       const fetchedQuiz = await client.getQuiz(quizId!);
 
       const points = calculatePoints(questions, userAnswers);
+      console.log("calculated points:", points);
       const req = {
         id: quizId,
         points: points,

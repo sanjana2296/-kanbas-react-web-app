@@ -33,6 +33,7 @@ function QuizDetails() {
       const isQuiz = await userClient.fetchQuiz(loginId, quizId);
       if (isQuiz) {
         setMessage("Quiz has been already submitted by the user");
+        console.log("points from backend::", isQuiz.points);
         setPoints(isQuiz?.points);
       }
     };
